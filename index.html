@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChemiStry-有机化学结构编辑器 by Aaronyf</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" type="image/jpg" href="./icons/cyclopentadiene.png" />
+    <link rel="icon" href="./icons/logo-3.png">
+    <link
+        href='https://fonts.googleapis.com/css?family=Poppins|Roboto|Oswald|Arial|Lobster|Pacifico|Satisfy|Bangers|Audiowide|Sacramento'
+        rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="loader-container">
+        <div class="name-container">
+            <p id="name">Chem<span>iStry</span></p>
+            <p id="loading">Loading...</p>
+        </div>
+        <div class="loader">
+            <ul class="hexagon-container">
+                <li class="hexagon hex_1"></li>
+                <li class="hexagon hex_2"></li>
+                <li class="hexagon hex_3"></li>
+                <li class="hexagon hex_4"></li>
+                <li class="hexagon hex_5"></li>
+                <li class="hexagon hex_6"></li>
+                <li class="hexagon hex_7"></li>
+            </ul>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+            <a id="logo" class="navbar-brand" href="#">
+                <img src="./icons/logo-school.png" alt="" srcset="">
+            </a>
+            <a id="header" class="navbar-brand" href="#">
+                <p id="name">ChemiStry</p>
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            新建
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><button class="dropdown-item" id="newTab">新文件(新窗口打开)</button></li>
+                            <li><button class="dropdown-item" id="currentTab">新文件(当前窗口打开)</button></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            文件
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><button class="dropdown-item" id="clear">清空</button></li>
+                            <li><button class="dropdown-item" id="isBlank">Is Blank?</button></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><button class="dropdown-item"><label for="open">打开...</label> <input id="open"
+                                        type="file" accept=".cmx"></button></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><button class="dropdown-item" id="save">保存文件</button></li>
+                            <li><button class="dropdown-item" id="saveAs">保存为PNG文件</button></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            编辑
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><button class="dropdown-item" id="undo">撤销(Ctrl+Z)</button></li>
+                            <li><button class="dropdown-item" id="redo">重做(Ctrl+Shift+Z)</button></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><button class="dropdown-item" id="copy">复制(Ctrl+C)</button></li>
+                            <li><button class="dropdown-item" id="paste">粘贴(Ctrl+V)</button></li>
+                            <li><button class="dropdown-item" id="cut">剪切(Ctrl+X)</button></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><button class="dropdown-item" id="select-all">全选</button></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            操作
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><button class="dropdown-item" id="align-left">左对齐</button></li>
+                            <li><button class="dropdown-item" id="align-right">右对齐</button></li>
+                            <li><button class="dropdown-item" id="align-center">居中对齐</button></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><button class="dropdown-item" id="rotate-left">向左旋转</button></li>
+                            <li><button class="dropdown-item" id="rotate-right">向右旋转</button></li>
+                            <li><button class="dropdown-item" id="rotate-180">旋转180°</button></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            模型(Beta)
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><button class="dropdown-item structure" data-name="vitamin-c.cmx">Vitamin C</button>
+                            </li>
+                            <li><button class="dropdown-item structure" data-name="caffeine.cmx">Caffeine</button></li>
+                            <li><button class="dropdown-item structure" data-name="lycopodine.cmx">Lycopodine</button>
+                            </li>
+                            <li><button class="dropdown-item structure"
+                                    data-name="dimethylstillboestrol.cmx">Diméthylstillboestrol</button></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a href="https://github.com/AaronyfDesign">
+                                    <button class="dropdown-item structure">2019届毕业生张一帆制</button>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="toolbar">
+            <button class="tool" data-name="bond" data-type="simple"><img src="./icons/bonds/bond.png" alt=""></button>
+            <button class="tool" data-name="bond" data-type="bold"><img src="./icons/bonds/bold-bond.png"
+                    alt=""></button>
+            <button class="tool" data-name="bond" data-type="dashed"><img src="./icons/bonds/dashed-bond.png"
+                    alt=""></button>
+            <button class="tool" data-name="bond" data-type="double"><img src="./icons/bonds/double-bond.png"
+                    alt=""></button>
+            <button class="tool" data-name="bond" data-type="hashed"><img src="./icons/bonds/hashed-bond.png"
+                    alt=""></button>
+            <button class="tool" data-name="bond" data-type="hashed-wedged"><img
+                    src="./icons/bonds/hashed-wedged-bond.png" alt=""></button>
+            <button class="tool" data-name="bond" data-type="hollow"><img src="./icons/bonds/hollow-bond.png"
+                    alt=""></button>
+            <button class="tool" data-name="bond" data-type="wedged"><img src="./icons/bonds/wedged-bond.png"
+                    alt=""></button>
+
+            <button class="tool" data-name="polygone" data-type="benzene"><img src="./icons/structures/benzene-2.png"
+                    alt=""></button>
+            <button class="tool" data-name="polygone" data-type="butane"><img src="./icons/structures/butane.png"
+                    alt=""></button>
+            <button class="tool" data-name="polygone" data-type="cyclopentadiene"><img
+                    src="./icons/structures/cyclopentadiene.png" alt=""></button>
+            <button class="tool" data-name="polygone" data-type="hexane"><img src="./icons/structures/hexane.png"
+                    alt=""></button>
+            <button class="tool" data-name="polygone" data-type="pentane"><img src="./icons/structures/pentane.png"
+                    alt=""></button>
+            <button class="tool" data-name="polygone" data-type="propane"><img src="./icons/structures/propane.png"
+                    alt=""></button>
+
+            <button class="tool" data-name="symbol" data-type="plus"><img src="./icons/others/plus.png" alt=""></button>
+            <button class="tool" data-name="symbol" data-type="circle-plus"><img src="./icons/others/circle-plus.png"
+                    alt=""></button>
+            <button class="tool" data-name="symbol" data-type="minus"><img src="./icons/others/minus.png"
+                    alt=""></button>
+            <button class="tool" data-name="symbol" data-type="circle-minus"><img src="./icons/others/circle-minus.png"
+                    alt=""></button>
+            <button class="tool" data-name="arrow" data-type=""><img src="./icons/others/arrow.png" alt=""></button>
+            <button class="tool" data-name="eraser" data-type=""><img src="./icons/others/eraser.png" alt=""></button>
+            <button class="tool active" data-name="text" data-type=""><img src="./icons/others/text.png"
+                    alt=""></button>
+            <button class="tool" data-name="selection" data-type=""><img src="./icons/others/selection.png"
+                    alt=""></button>
+        </div>
+
+
+        <canvas id="canvas"></canvas>
+
+
+        <div class="text-toolbar">
+            <div class="text-icons">
+                <button>
+                    <img src="./icons/text/svgtopng/font-color.png">
+                </button>
+                <button>
+                    <img src="./icons/text/svgtopng/font-family2.png">
+                </button>
+                <button>
+                    <img src="./icons/text/svgtopng/text-align.png">
+                </button>
+                <button>
+                    <img src="./icons/text/svgtopng/bg-color.png">
+                </button>
+                <button>
+                    <img src="./icons/text/svgtopng/text-bg.png">
+                </button>
+                <button>
+                    <img src="./icons/text/svgtopng/stroke-color.png">
+                </button>
+                <button>
+                    <img src="./icons/text/svgtopng/stroke.png">
+                </button>
+                <button>
+                    <img src="./icons/text/svgtopng/font-size.png">
+                </button>
+                <button>
+                    <img src="./icons/text/svgtopng/line-height.png">
+                </button>
+                <button>
+                    <img src="./icons/text/svgtopng/text-decoration.png">
+                </button>
+            </div>
+            <div id="text-wrapper" ng-show="getText()">
+                <div>
+                    <label for="text-color" class="form-label">文字颜色</label>
+                    <input type="color" class="form-control-color" id="text-color" value="#000000"
+                        title="Choose your color">
+                </div>
+                <div>
+
+                    <label for="font-family">字体</label>
+                    <select id="font-family" class="form-select">
+                        <option value="times new roman" selected>Times New Roman</option>
+                        <option value="arial">Arial</option>
+                        <option value="georgia">Georgia</option>
+                        <option value="courier">Courier</option>
+                        <option value="comic sans ms">Comic Sans MS</option>
+                        <option value="impact">Impact</option>
+                        <option value="pacifico">Pacifico</option>
+                        <option value="vt323">VT323</option>
+                        <option value="quicksand">Quicksand</option>
+                        <option value="inconsolata">Inconsolata</option>
+                        <option value="tangerine">Tangerine</option>
+                        <option value="palette mosaic">Palette Mosaic</option>
+                        <option value="montecarlo">MonteCarlo</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="text-align">文本对齐</label>
+                    <select id="text-align" class="form-select">
+                        <option value="left">向左</option>
+                        <option value="center">居中</option>
+                        <option value="right">向右</option>
+                        <option value="justify">自动调整</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="text-bg-color" class="form-label">背景颜色</label>
+                    <input type="color" class="form-control-color" id="text-bg-color" value="#ffffff"
+                        title="Choose your color">
+                </div>
+                <div>
+                    <label for="text-lines-bg-color" class="form-label">文本衬底颜色</label>
+                    <input type="color" class="form-control-color" id="text-lines-bg-color" value="#ffffff"
+                        title="Choose your color">
+                </div>
+                <div>
+                    <label for="text-stroke-color" class="form-label">描边颜色</label>
+                    <input type="color" class="form-control-color" id="text-stroke-color" value="#000000"
+                        title="Choose your color">
+                </div>
+                <div>
+                    <label for="text-stroke-width" class="form-label">描边宽度</label>
+                    <input type="range" class="form-range" value="4" min="0" max="20" step="2" id="text-stroke-width">
+                </div>
+                <div>
+                    <label for="text-font-size" class="form-label">字号</label>
+                    <input type="range" class="form-range" value="42" min="1" max="120" step="2" id="text-font-size">
+                </div>
+                <div>
+                    <label for="text-line-height" class="form-label">行距</label>
+                    <input type="range" class="form-range" value="1" min="1" max="10" step="1" id="text-line-height">
+                </div>
+                <div id="text-controls-additional">
+                    <div>
+                        <label class="form-check-label" for="text-cmd-bold" id="bold">B</label>
+                        <input type='checkbox' class="form-check-input" name='fonttype' id="text-cmd-bold">
+                    </div>
+
+                    <div>
+                        <label class="form-check-label" for="text-cmd-italic" id="italic">I</label>
+                        <input type='checkbox' class="form-check-input" name='fonttype' id="text-cmd-italic">
+                    </div>
+
+                    <div>
+                        <label class="form-check-label" for="text-cmd-underline" id="underline">U</label>
+                        <input type='checkbox' class="form-check-input" name='fonttype' id="text-cmd-underline">
+                    </div>
+
+                    <div>
+                        <label class="form-check-label" for="text-cmd-linethrough" id="linethrough">LT</label>
+                        <input type='checkbox' class="form-check-input" name='fonttype' id="text-cmd-linethrough">
+                    </div>
+
+                    <div>
+                        <label class="form-check-label" for="text-cmd-overline" id="overline">O</label>
+                        <input type='checkbox' class="form-check-input" name='fonttype' id="text-cmd-overline">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/fabric.min.js"></script>
+    <script src="./js/FileSaver.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
