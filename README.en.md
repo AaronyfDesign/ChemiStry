@@ -8,22 +8,21 @@ Software architecture description
 
 #### Installation
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  You can git clone to your local director firstly or download the progrom as ZIP file.
+2.  Decompress the file and direct to the file index.html.
+3.  Double-click the file to open it on your local browser or deploy it on your own server.
 
 #### Instructions
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  Navigator is in the top of the interface, containing the different options which you can interact with.
+2.  The main part of the interface is the canvas, which you can edit the sturctures, elements and add texts or whatever you want.
+3.  The toolbar on the left is the section collecting tools, like C-C Bond, benzene, select tool, arrow etc.
+4.  The toolbar on the right is the section for editing texts customizing the amount of font attributes precisely. 
 
 #### Contribution
 
 1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+
 
 
 #### Gitee Feature
