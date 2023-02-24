@@ -9,9 +9,9 @@ An organic structure editor for chemistry lectures in No. 1 middle school.
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  git clone或者打包下载至本地目录。
+2.  找到index.html文件。
+3.  双击浏览器运行或者部署至服务器。
 
 #### 使用说明
 
