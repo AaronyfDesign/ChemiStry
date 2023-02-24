@@ -15,9 +15,7 @@ An organic structure editor for chemistry lectures in No. 1 middle school.
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+详见英文Readme
 
 #### 参与贡献
 
